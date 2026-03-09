@@ -30,8 +30,9 @@
         {
             txtNome = new TextBox();
             panel1 = new Panel();
+            btnCarica = new Button();
             button2 = new Button();
-            button1 = new Button();
+            btnSalva = new Button();
             txtPeso = new TextBox();
             radioButton5 = new RadioButton();
             radioButton4 = new RadioButton();
@@ -57,8 +58,9 @@
             // panel1
             // 
             panel1.BackColor = Color.Gainsboro;
+            panel1.Controls.Add(btnCarica);
             panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnSalva);
             panel1.Controls.Add(txtPeso);
             panel1.Controls.Add(radioButton5);
             panel1.Controls.Add(radioButton4);
@@ -77,9 +79,18 @@
             panel1.Size = new Size(776, 426);
             panel1.TabIndex = 1;
             // 
+            // btnCarica
+            // 
+            btnCarica.Location = new Point(569, 385);
+            btnCarica.Name = "btnCarica";
+            btnCarica.Size = new Size(58, 38);
+            btnCarica.TabIndex = 18;
+            btnCarica.Text = "Carica";
+            btnCarica.UseVisualStyleBackColor = true;
+            // 
             // button2
             // 
-            button2.Location = new Point(548, 385);
+            button2.Location = new Point(497, 385);
             button2.Name = "button2";
             button2.Size = new Size(66, 38);
             button2.TabIndex = 17;
@@ -87,14 +98,15 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // button1
+            // btnSalva
             // 
-            button1.Location = new Point(633, 385);
-            button1.Name = "button1";
-            button1.Size = new Size(58, 38);
-            button1.TabIndex = 16;
-            button1.Text = "Salva";
-            button1.UseVisualStyleBackColor = true;
+            btnSalva.Location = new Point(633, 385);
+            btnSalva.Name = "btnSalva";
+            btnSalva.Size = new Size(58, 38);
+            btnSalva.TabIndex = 16;
+            btnSalva.Text = "Salva";
+            btnSalva.UseVisualStyleBackColor = true;
+            btnSalva.Click += btnSalva_Click;
             // 
             // txtPeso
             // 
@@ -106,7 +118,7 @@
             // radioButton5
             // 
             radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(432, 395);
+            radioButton5.Location = new Point(398, 395);
             radioButton5.Name = "radioButton5";
             radioButton5.Size = new Size(93, 19);
             radioButton5.TabIndex = 14;
@@ -117,7 +129,7 @@
             // radioButton4
             // 
             radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(333, 395);
+            radioButton4.Location = new Point(299, 395);
             radioButton4.Name = "radioButton4";
             radioButton4.Size = new Size(93, 19);
             radioButton4.TabIndex = 12;
@@ -127,7 +139,7 @@
             // radioButton3
             // 
             radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(246, 395);
+            radioButton3.Location = new Point(123, 395);
             radioButton3.Name = "radioButton3";
             radioButton3.Size = new Size(81, 19);
             radioButton3.TabIndex = 11;
@@ -138,7 +150,7 @@
             // radioButton2
             // 
             radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(157, 395);
+            radioButton2.Location = new Point(210, 395);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(83, 19);
             radioButton2.TabIndex = 10;
@@ -149,17 +161,17 @@
             // radioButton1
             // 
             radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(19, 395);
+            radioButton1.Location = new Point(27, 395);
             radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(132, 19);
+            radioButton1.Size = new Size(90, 19);
             radioButton1.TabIndex = 9;
             radioButton1.TabStop = true;
-            radioButton1.Text = "Calcolo IMC singolo";
+            radioButton1.Text = "Calcolo IMC";
             radioButton1.UseVisualStyleBackColor = true;
             // 
             // btnInserisci
             // 
-            btnInserisci.Location = new Point(707, 385);
+            btnInserisci.Location = new Point(697, 385);
             btnInserisci.Name = "btnInserisci";
             btnInserisci.Size = new Size(66, 38);
             btnInserisci.TabIndex = 8;
@@ -170,9 +182,9 @@
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(3, 60);
+            listBox1.Location = new Point(3, 45);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(770, 319);
+            listBox1.Size = new Size(770, 334);
             listBox1.TabIndex = 7;
             // 
             // label3
@@ -239,6 +251,7 @@
         private RadioButton radioButton5;
         private TextBox txtPeso;
         private Button button2;
-        private Button button1;
+        private Button btnSalva;
+        private Button btnCarica;
     }
 }

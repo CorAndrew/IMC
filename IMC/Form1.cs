@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace IMC
 {
@@ -112,7 +113,7 @@ namespace IMC
                 {
                     somma += storicoIMC[i];
                 }
-                MessageBox.Show($"La media degli IMC è: {somma / pos, 2}");
+                MessageBox.Show($"La media degli IMC è: {somma / pos,2}");
             }
             else if (radioButton3.Checked) // Moda IMC
             {
@@ -162,6 +163,59 @@ namespace IMC
             else
             {
                 MessageBox.Show("Seleziona un'operazione");
+            }
+        }
+
+        private void btnSalva_Click(object sender, EventArgs e)
+        {
+            // True permette di non sovrascrivere tutti i dati
+            using (StreamWriter dati = new StreamWriter("dati.txt", true))
+            {
+                for (int i = 0; i < pos; i++)
+                {
+                    // Recupera la riga dalla ListBox e l'IMC corrispondente dall'array
+                    string rigaListBox = listBox1.Items[i].ToString();
+                    double valoreIMC = storicoIMC[i];
+
+                    // Scrive nel file separando i due pezzi con un punto e virgola
+                    dati.WriteLine(rigaListBox + ";" + valoreIMC);
+                }
+            }
+            MessageBox.Show("Dati salvati su file!");
+        }
+        private void btnCarica_Click(object sender, EventArgs e)
+        {
+            if (File.Exists("dati.txt"))
+            {
+                // Pulizia della list box e azzermaneto del contatore
+                listBox1.Items.Clear();
+                pos = 0;
+
+                using (StreamReader lettore = new StreamReader("dati.txt"))
+                {
+                    string rigaFile;
+                    // Legge riga per riga finchè non finisce il file
+                    while ((rigaFile = lettore.ReadLine()) != null)
+                    {
+                        // Divide la riga in due parti usando il punto e virgola
+                        string[] parti = rigaFile.Split(';');
+
+                        if (parti.Length == 2)
+                        {
+                            // La prima parte torna nella ListBox
+                            listBox1.Items.Add(parti[0]);
+
+                            // La seconda parte torna nell'array per le statistiche
+                            storicoIMC[pos] = Convert.ToDouble(parti[1]);
+                            pos++;
+                        }
+                    }
+                }
+                MessageBox.Show("Dati caricati dal file!");
+            }
+            else
+            {
+                MessageBox.Show("Nessun file trovato!");
             }
         }
     }
